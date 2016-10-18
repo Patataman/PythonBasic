@@ -4,4 +4,4 @@ Ejemplos básicos de Python.
 * Variables y listas
 * Bucles
 * Condicionales
-* Imprimir por pantalla
+* I/O

@@ -4,4 +4,3 @@ Ejemplos de aspectos medios de Python.
 * Clases y métodos
 * Ternarios
 * Importar clases
-* Bucles (Avanzado)
