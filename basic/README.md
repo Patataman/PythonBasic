@@ -2,6 +2,6 @@ Ejemplos básicos de Python.
 
 * Sintaxis
 * Variables y listas
-* Bucles
+* Sentencias de control: Bucles y condicionales
 * Condicionales
-* I/O
+* I/O (Entrada/Salida)
