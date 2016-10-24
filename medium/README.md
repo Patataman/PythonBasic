@@ -1,7 +1,7 @@
 Ejemplos de aspectos medios de Python.
 
-* Abrir, Leer y Escribir ficheros.
 * Metodos
 * Clases
 * Ternarios
-* Importar clases
+* Importar clases, paquetes...
+* Abrir, Leer y Escribir ficheros.

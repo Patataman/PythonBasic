@@ -41,6 +41,16 @@ for i in xrange(0,6,2):
 '''
 Esto imprimiría las posiciones, 0, 2 y 4 (1, 3 y 5). Ya que la lista no incluye el valor límite (6).
 
+Antes de empezar con while e if, a diferencia de otros lenguajes, los operadores AND, OR y !(not) son
+distintos a la mayoría:
+
+&& -> and
+|| -> or
+! -> not
+
+Parece de sentido común, pero no acepta los otros valores.
+
+
 El bucle While no tiene mucho misterio, su sintaxis es:
 
 while <se cumple condición>:
