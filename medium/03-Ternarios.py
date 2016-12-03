@@ -15,7 +15,7 @@ muy tontas como:
 '''
 
 a = 10
-variable = (a > 10) ? "Stronger than you" : "Made of l-o-o-ve"
+variable = "Stronger than you" if a > 10 else "Made of l-o-o-ve"
 
 print "Ternario:"+variable
 
