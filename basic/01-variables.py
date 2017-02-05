@@ -69,4 +69,13 @@ listaCroqueta[0] #Esto nos devolvería "Strings"
 
 '''
 Hay formas más avanzadas de eliminar o recuperar objetos de una lista, en todo caso se verá en los ejemplos de "medium" o "advanced"
+
+
+Las listas están indizadas con números ascendentes desde el cero, pero existen listas especiales llamadas diccionarios
+cuyo indice puede ser escogido.
 '''
+
+menu = {"entrante": "croquetas", "primerPlato": "croquetas de jamón", "segundoPlato": "croquetas de cocido", "postre": "croquetas de nata", "deBeber": "Albóndigas"} 
+
+#Obtener postre
+menu["postre"]

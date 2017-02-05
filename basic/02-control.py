@@ -98,3 +98,24 @@ else:
 
 #En este caso se llegaría hasta la sentencia else. Pero si 'hora' fuese igual a "noche",
 #se ejecutaría el código asociado a ese bloque y no se ejecutaría ninguna otra parte del if.
+
+'''
+Como en la mayoría de lenguajes, estas sentencias se pueden anidar todas las veces que se quiera,
+pero se debe tener en cuenta la tabulación para que python sepa a que sentencia de control pertenecen
+las instrucciones
+'''
+for x in xrange(1,20):
+ 	for i in range(1,3):
+ 		print (i + " patata")
+ 	if x%2 == 0:
+ 		print (x " es par")
+ 	else:
+ 		if x == 5:
+ 			print (x " por el *************")
+ 		else:
+ 			print (x " es impar")
+
+ 	print ("hemos terminado con " x)
+
+ print ("hemos terminado el for")
+
