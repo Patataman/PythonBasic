@@ -53,7 +53,7 @@ class Rocket:
 	  algunas de sus peculiaridades es poder definir atributos al "vuelo". Por eso dentro del init
 	  se usa self.combustible, etc...
 	- Siempre que nos refiramos a un atributo de la clase, dentro de la misma hay que usar self, de
-	  igual forma con los métodos (creo,xD)
+	  igual forma con los métodos
 	'''
 
 	#Método que hace despegar el cohete y dice si llega a X distancia. Supongamos que gasta 1 de
@@ -67,7 +67,7 @@ class Rocket:
 			print("Misión exitosa!")
 			#o return True y luego hacer un If-Else
 		else:
-			print("Mejor vuelve al Kerbal Space...")
+			print("Mejor vuelve al Kerbal Space Program...")
 			#o return False y luego hacer un If-Else
 
 	#Hay otros muchos métodos propios, como el destructor, pero para quien tenga más interés:

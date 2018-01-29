@@ -82,4 +82,4 @@ def multiValues(valObligatorio, val1 = 20):
 	print(valObligatorio+val1)
 
 #Si hacemos multiValues(20) imprimirá 40.
-#Si hacemos multiValues(20,0) imprimirá 0
+#Si hacemos multiValues(20,0) imprimirá 20
