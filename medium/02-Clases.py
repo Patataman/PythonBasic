@@ -64,10 +64,10 @@ class Rocket:
 			distancia -= 100
 
 		if distancia <= 0:
-			print "Misión exitosa!"
+			print("Misión exitosa!")
 			#o return True y luego hacer un If-Else
 		else:
-			print "Mejor vuelve al Kerbal Space..."
+			print("Mejor vuelve al Kerbal Space...")
 			#o return False y luego hacer un If-Else
 
 	#Hay otros muchos métodos propios, como el destructor, pero para quien tenga más interés:

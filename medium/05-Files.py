@@ -20,14 +20,14 @@ Vamos a leer el README por no llenar la carpeta de ficheros
 readme = open("README.md", 'a+') #a+ porque quiero leer y escribir al final
 
 #Ahora hay varias formas de leer el fichero, de golpe:
-print readme.read()
+print(readme.read())
 
 readme.seek(0) #Devuelve el puntero de posición al comienzo 
 			   #(Cosas internas de funcionamiento de lectura/escritura de ficheros)
 
 #Leer línea a línea (separa por saltos de línea '\n')
 for linea in readme:
-	print linea,
+	print(linea,)
 readme.seek(0)
 
 #Ya sabemos leer nuestro fichero, ahora sólo queda escribir en él.
@@ -39,6 +39,6 @@ import os	   		#Para que escriba ahora en el fichero y no espere al close.
 os.fsync(readme)	#Para que escriba ahora en el fichero y no espere al close.
 
 readme.seek(0) 		#El puntero para leer y escribir es el mismo :/
-print readme.read()
+print(readme.read())
 
 readme.close() #Buena práctica el cerrar el fichero al acabar

@@ -30,13 +30,13 @@ sumaVeryImportant = sumar(1,1)
 def fibonacci(limite):
 	n_1 = 0
 	n = 1
-	print n_1, n,
+	print(n_1, n,)
 	while n < limite:
-		print n_1 + n,
+		print(n_1 + n,)
 		aux = n
 		n += n_1
 		n_1 = aux
-	print "" #Esto lo hago porque si no, el siguiente print es en la misma línea
+	print("") #Esto lo hago porque si no, el siguiente print es en la misma línea
 
 fibonacci(50)
 
@@ -54,14 +54,14 @@ def getPos():
 #Para recuperar ambos valores:
 posX, posY = getPos()
 
-print posX, posY
+print(posX, posY)
 
 #si sólo se guarda en una variable se devuelve como un diccionario, el cual puede
 #ser tratado como una lista.
 
 posXY = getPos()
 #Si hacemos posXY[0] obtenemos 25 y posXY[1] es 30
-print posXY[0], posXY[1]
+print(posXY[0], posXY[1])
 
 '''
 También se puede hacer recursividad en los métodos, lo cual no requiere ninguna ciencia
@@ -79,7 +79,7 @@ PRIMEROS.
 '''
 
 def multiValues(valObligatorio, val1 = 20):
-	print valObligatorio+val1
+	print(valObligatorio+val1)
 
 #Si hacemos multiValues(20) imprimirá 40.
 #Si hacemos multiValues(20,0) imprimirá 0
