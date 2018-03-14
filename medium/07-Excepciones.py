@@ -51,7 +51,7 @@ except:
 	print("Except genérico, ya que no hay error de archivos")
 
 
-''' Con el comando "raise" podemos forzar la detención del programa debido a una excepción.
+''' Con el comando "raise" podemos levantar manualmente excepciones.
 
 	En algunos casos esto puede ser útil ya que nos puede interesar "proteger" la ejecución
 	del programa con try-except e intentar arreglar el error o simplemente generar un log más detallado
