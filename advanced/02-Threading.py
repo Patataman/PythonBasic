@@ -1,6 +1,6 @@
 ''' Sabed de antemano que todo esto es mentira.
     CPython NO TIENE PARALELISMO (la versión que usamos casi todos)
-    Debido al GIL (Global Interpreter Lock https://wiki.python.org/moin/GlobalInterpreterLock),
+    debido al GIL (Global Interpreter Lock https://wiki.python.org/moin/GlobalInterpreterLock),
     que fuerza a que sólo se pueda ejecutar 1 proceso de Python a la vez, por lo que
     paralelismo real nunca tendremos.
 
@@ -31,9 +31,9 @@ import time #Para luego
 def foo(*lista):
     for x in lista:
         a = x*x*x
-    print("HE ACABADO!")
+    print("HE ACABADO! - HILO: {}".format(threading.currentThread().getName()) )
 
-hilo1 = threading.Thread(target=foo, args=(range(0,100_000)) )
+hilo1 = threading.Thread(name="Test", target=foo, args=(range(0,100_000)) )
 
 ''' Una vez definido nuestro hilo superimportante, para ponerlo a ejecutar debemos
     usar la función "Thread.start()" '''
@@ -51,6 +51,22 @@ hilo1.start()
 
 print("Antes hilo")
 while hilo1.is_alive():
-    print("ESTÁ VIVO?", hilo1.is_alive())
-
+    print("ESTÁ VIVO? {}, ".format(hilo1.getName()), hilo1.is_alive())
 print("Despues hilo")
+
+''' Ahora vamos a usar varios hilos para dividir la carga de trabajo de algo muy pesado
+'''
+
+super_list = range(0,900_000)
+hilos = []
+hilos.append(threading.Thread(name="Super 1", target=foo, args=(super_list[:len(super_list)//2])) )
+hilos.append(threading.Thread(name="Super 2", target=foo, args=(super_list[len(super_list)//2:])) )
+
+for h in hilos:
+    h.start()
+
+while len(hilos)>0:
+    for h in hilos:
+        print("ESTÁ VIVO? {}, ".format(h.getName()), h.is_alive())
+        if not h.is_alive():
+            hilos.remove(h)
