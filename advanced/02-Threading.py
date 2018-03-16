@@ -52,6 +52,7 @@ hilo1.start()
 print("Antes hilo")
 while hilo1.is_alive():
     print("ESTÁ VIVO? {}, ".format(hilo1.getName()), hilo1.is_alive())
+    
 print("Despues hilo")
 
 ''' Ahora vamos a usar varios hilos para dividir la carga de trabajo de algo muy pesado
