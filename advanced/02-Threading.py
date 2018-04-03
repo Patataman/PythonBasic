@@ -39,6 +39,7 @@ hilo1 = threading.Thread(name="Test", target=foo, args=(range(0,100_000)) )
     usar la función "Thread.start()" '''
 
 #El hilo comienza a ejecutar
+print("Antes hilo")
 hilo1.start()
 ''' ¿¿Pero como sabemos cuando acaba??
 
@@ -49,10 +50,9 @@ hilo1.start()
     Para saber si un hilo está en ejecución, se usa "Thread.is_alive()"
     que nos avisa de si está en ejecución o ha acabado.'''
 
-print("Antes hilo")
 while hilo1.is_alive():
     print("ESTÁ VIVO? {}, ".format(hilo1.getName()), hilo1.is_alive())
-    
+
 print("Despues hilo")
 
 ''' Ahora vamos a usar varios hilos para dividir la carga de trabajo de algo muy pesado
