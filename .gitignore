@@ -87,3 +87,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+frameworks/NLTK/assets/stanford
