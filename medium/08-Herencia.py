@@ -20,6 +20,7 @@ class A():
 class B(A):
     def __init__(self, a_x, a_y, b_z):
         super(B , self).__init__(a_x,a_y)
+        #super().__init__(a_x,a_y) es lo mismo
         self.z = b_z
 
     def printXYZ(self):

@@ -40,7 +40,7 @@ class Fruta():
 
 #Por convenio los alias empiezan en mayúscula
 Cesta = List[Fruta]
-Compra = Tuple[Cesta, Cesta]
+Compra = List[Cesta]
 
 def compra(elem1: Cesta, elem2: Cesta) -> Compra:
     return [elem1, elem2]
@@ -54,10 +54,13 @@ print(compra(cesta_falsa, cesta_falsa))
 
 from typing import NewType
 
-#Al fin y al cabo esto va como una lambda
+#Realmento esto al final funciona como un alias xDD
 Droga = NewType('Droga', str)
 
 coca: Droga = Droga("Cocaina")
+coco = Droga("Cocaina2")
+print(coco)
+print("Tipo: {}".format(type(coca)))    #Imprime "str" ya que hemos dicho que Droga va a ser str.
 farlopa: Droga = Droga("Farlopa")
 
 def goToJail(pruebas: List[Droga]) -> str:
