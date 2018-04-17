@@ -1,5 +1,7 @@
 # NLTK - Natural Language Toolkit
 
+`version: 3.2.5`
+
 Módulo para procesamiento de lenguaje natural.
 Por defecto principalmente en inglés ( como todo :sad: )
 
