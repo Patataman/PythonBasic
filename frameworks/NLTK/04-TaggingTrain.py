@@ -124,9 +124,10 @@ regexp_tagger = RegexpTagger(
 print("Regexp Tagger: {}".format(regexp_tagger.evaluate(test_data)))
 
 ''' Visto lo anterior, podemos poner al tagger regexp como backoff
-    de los N-gram creados anteriormente, pero dado que si * -> NN,
-    es decir, el resto de cosas que npi de que es, es NN, eliminaré
-    esa clasificación.
+    de los N-gram creados anteriormente.
+
+    O podríamos ponerlo 1º, pero me fio más de los preentrenados
+    que de unas reglas puestas a capón.
 '''
 
 regexp_tagger = RegexpTagger(
@@ -137,9 +138,13 @@ regexp_tagger = RegexpTagger(
           ( r'.*ly$', 'RB'),           # adverbs
           ( r'.*s$', 'NNS'),           # plural nouns
           ( r'.*ing$', 'VBG'),         # gerunds
-          (r'.*ed$', 'VBD')           # past tense verbs
-          ], backoff=trigram_tagger)
-print("Wombo-combo Tagger: {}".format(regexp_tagger.evaluate(test_data)))
+          (r'.*ed$', 'VBD'),           # past tense verbs
+          (r'.*', 'NN')                # past tense verbs
+          ])
+unigram_tagger = UnigramTagger(train_data,backoff=regexp_tagger)
+bigram_tagger = BigramTagger(train_data, backoff=unigram_tagger)
+wombo_combo = TrigramTagger(train_data,backoff=bigram_tagger)
+print("Wombo-combo Tagger: {}".format(wombo_combo.evaluate(test_data)))
 
 
 ''' ######################
