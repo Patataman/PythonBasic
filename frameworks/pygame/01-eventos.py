@@ -1,18 +1,29 @@
-import pygame, sys  #Import del paquete
-from pygame.locals import *     #Necesario para las teclas presionadas
+#Necesario para las teclas presionadas
+from pygame.locals import *
+#Import del paquete
+import pygame
+import sys
 
-pygame.init()       #se inicializa
+#se inicializa
+pygame.init()
 
 ventana = pygame.display.set_mode((700,400))
 
-while True:     #Bucle de "Juego"
+#Bucle de "Juego"
+while True:
     for event in pygame.event.get():    #Cuando ocurre un evento...
-        #Hasta aqui todo era exactamente igual que en el ejemplo anterior
-        #En este ejemplo vamos a hacer que se modifique el color de fondo
-        #cuando se pulsen algunas teclas en concreto.
+        '''
+            Hasta aqui todo era exactamente igual que en el ejemplo anterior.
+
+            En este ejemplo vamos a hacer que se modifique el color de fondo
+            cuando se pulsen algunas teclas en concreto.
+        '''
+        #Cuando el evento es presionar una tecla...
         if event.type == pygame.KEYDOWN:
+            #Obtenemos el mapping de teclas presionadas
             keys = pygame.key.get_pressed()
             if keys[K_w]:
+                #Rellenamos la ventana con un color de Pygame
                 ventana.fill(pygame.Color("blue"))
             if keys[K_a]:
                 ventana.fill(pygame.Color("red"))
