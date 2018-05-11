@@ -34,10 +34,3 @@ gramatica.productions()
 #que se podrían generar
 for posible_frase in generate(gramatica, depth=5):
     print(' '.join(posible_frase))
-
-''' #####################
-    ###  Parseadores  ###
-    #####################
-
-    
-'''
