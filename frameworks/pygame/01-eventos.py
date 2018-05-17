@@ -11,7 +11,11 @@ ventana = pygame.display.set_mode((700,400))
 
 #Bucle de "Juego"
 while True:
-    for event in pygame.event.get():    #Cuando ocurre un evento...
+    ''' Documentación relacionado con los eventos:
+        https://www.pygame.org/docs/ref/event.html
+    '''
+    #Obtenemos todos los eventos que ocurren en este momento
+    for event in pygame.event.get():
         '''
             Hasta aqui todo era exactamente igual que en el ejemplo anterior.
 

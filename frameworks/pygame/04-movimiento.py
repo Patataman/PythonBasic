@@ -10,10 +10,17 @@ pygame.init()
 ventana = pygame.display.set_mode((700,400))
 
 #El reloj interno nos valdrá para realizar las actualizaciones de sprite
-# o movimiento.
+# o movimiento. https://www.pygame.org/docs/ref/time.html
 clock = pygame.time.Clock()
 
+''' Documentación sobre sprites
+    https://www.pygame.org/docs/ref/sprite.html
 
+    Principalmente los sprites están compuestos de una imagen
+    y posteriormente de un objeto Rect (https://www.pygame.org/docs/ref/rect.html)
+    que utiliza Pygame para situarlo dentro de la pantalla y otras cosas
+    como colisiones, etc
+'''
 class Personaje(sprite.Sprite):     #Nuestro personaje hereda de la clase Sprite de Pygame
 
     def __init__(self):

@@ -11,6 +11,14 @@ pygame.init()
 #Establecemos el tamaño de la ventana.
 ventana = pygame.display.set_mode((700,400))
 
+''' Documentación sobre sprites
+    http://caca.zoy.org/wiki/libcaca
+
+    Principalmente los sprites están compuestos de una imagen
+    y posteriormente de un objeto Rect (https://www.pygame.org/docs/ref/rect.html)
+    que utiliza Pygame para situarlo dentro de la pantalla y otras cosas
+    como colisiones, etc
+'''
 #Nuestro personaje hereda de la clase Sprite de Pygame
 class Personaje(sprite.Sprite):
 

@@ -12,9 +12,17 @@ ventana = pygame.display.set_mode((700,400))
 ''' Hasta aquí sigue siendo igual que las otras veces
 '''
 #El reloj interno nos valdrá para realizar las actualizaciones de sprite
-# o movimiento.
+# o movimiento. https://www.pygame.org/docs/ref/time.html
 clock = pygame.time.Clock()
 
+''' Documentación sobre sprites
+    https://www.pygame.org/docs/ref/sprite.html
+
+    Principalmente los sprites están compuestos de una imagen
+    y posteriormente de un objeto Rect (https://www.pygame.org/docs/ref/rect.html)
+    que utiliza Pygame para situarlo dentro de la pantalla y otras cosas
+    como colisiones, etc
+'''
 #Nuestro personaje hereda de la clase Sprite de Pygame
 class Personaje(sprite.Sprite):
 
@@ -90,7 +98,7 @@ while True:     #Bucle de "Juego"
 
     ''' Esto significa que se van realizan 6
         actualizaciones del juego por segundo.
-        
+
         Es necesario hacerlo en cada iteración
         por que si no se reinicia
     '''

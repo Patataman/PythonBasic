@@ -5,6 +5,11 @@ import sys
 #Inicializamos pygame
 pygame.init()
 
+''' Se utiliza la clase display para todo
+    lo relacionado con las ventanas.
+
+    https://www.pygame.org/docs/ref/display.html
+'''
 #Establecemos el tamaño de la ventana.
 ventana = pygame.display.set_mode((700,400))
 #podemos ponerle titulo a nuestra ventana, entre otras cosas,
