@@ -50,7 +50,7 @@ class Personaje(sprite.Sprite):     #Nuestro personaje hereda de la clase Sprite
 
 
     #Método heredado de la clase Sprite
-    def update(self, ventana):
+    def update(self, dt, ventana):
         ''' Aquí es donde se realizarán las actualizaciones del personaje.
             Es decir, movimiento, cambios en el sprite, cambios
             de atributos como puede ser la vida...
@@ -62,7 +62,7 @@ class Personaje(sprite.Sprite):     #Nuestro personaje hereda de la clase Sprite
             self.current_frame = 0
         #Si no se llega, se sigue aumentando
         else:
-            self.current_frame += 1
+            self.current_frame += 3*dt
 
         ''' Una vez actualizados los frames, se actualiza la imagen actual del personaje.
 
@@ -71,7 +71,7 @@ class Personaje(sprite.Sprite):     #Nuestro personaje hereda de la clase Sprite
             depender del frame (momento actual) en el que nos situemos.
         '''
         self.image = pygame.transform.scale(
-            self.spriteSheet.subsurface((self.current_frame*self.frame_width*2,0,200,420)),
+            self.spriteSheet.subsurface((int(self.current_frame)*self.frame_width*2,0,200,420)),
             (self.frame_width,self.frame_height))
 
     '''
@@ -111,12 +111,21 @@ grupo_obstaculo.add(magikarp_obstaculo)
 
 
 while True:     #Bucle de "Juego"
+    ''' Esto significa que se van realizan 30
+        actualizaciones del juego por segundo.
+
+        Es necesario hacerlo en cada iteración
+        por que si no se reinicia
+    '''
+    dt = clock.tick(30) / 1000
+
     for event in pygame.event.get():    #Cuando ocurre un evento...
         if event.type == pygame.QUIT:   #Si el evento es cerrar la ventana
             pygame.quit()               #Se cierra pygame
             sys.exit()                  #Se cierra el programa
 
         #Vamos a movernos sólo cuando se presione alguna tecla
+        pixels_h = pixels_v = 0
         if event.type == pygame.KEYDOWN:
             keys = pygame.key.get_pressed()
             ''' Cuando ocurre un evento y están colisionando,
@@ -128,33 +137,26 @@ while True:     #Bucle de "Juego"
                 mientras que hay otras con formas predefinidas.
                 https://www.pygame.org/docs/ref/sprite.html
             '''
-            if pygame.sprite.collide_mask(magikarp_jugador, magikarp_obstaculo):
-                magikarp_obstaculo.rect.center = (ventana.get_width()/2+int(random.uniform(-200,200)),
-                                                    ventana.get_height()/2+int(random.uniform(-200,200)))
             if keys[K_w]:
-                for i in grupo_movimiento:
-                    i.mover(0,-100)
+                pixels_v = -10
             if keys[K_a]:
-                for i in grupo_movimiento:
-                    i.mover(-100,0)
+                pixels_h = -10
             if keys[K_d]:
-                for i in grupo_movimiento:
-                    i.mover(100,0)
+                pixels_h = 10
             if keys[K_s]:
-                for i in grupo_movimiento:
-                    i.mover(0,100)
+                pixels_v = 10
+
+    for i in grupo_movimiento:
+        i.mover(pixels_h,pixels_v)
+
+    #Si hay colisión...
+    if pygame.sprite.collide_mask(magikarp_jugador, magikarp_obstaculo):
+        magikarp_obstaculo.rect.center = (ventana.get_width()/2+int(random.uniform(-200,200)),
+                                        ventana.get_height()/2+int(random.uniform(-200,200)))
 
     #Actualizacion de cosas
-    ventana.fill((0, 0, 0))             #Limpieza de la pantalla
+    ventana.fill((0, 0, 0))                    #Limpieza de la pantalla
+    grupo_movimiento.update(dt, ventana)       #Actualización de los elementos en el grupo
     grupo_obstaculo.draw(ventana)
-    grupo_movimiento.update(ventana)       #Actualización de los elementos en el grupo
-    grupo_movimiento.draw(ventana)         #Dibujamos todo lo que hay en el grupo. En este caso a Magickarp
-    pygame.display.flip()               #Actualiza la ventana
-
-    ''' Esto significa que se van realizan 6
-        actualizaciones del juego por segundo.
-
-        Es necesario hacerlo en cada iteración
-        por que si no se reinicia
-    '''
-    clock.tick(6)
+    grupo_movimiento.draw(ventana)             #Dibujamos todo lo que hay en el grupo. En este caso a Magickarp
+    pygame.display.flip()                      #Actualiza la ventana

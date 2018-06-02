@@ -10,4 +10,5 @@ aspectos necesarios para hacer vuestro juego:
 * Mover sprites
 * Detectar colisiones entre sprites
 * Incluir sonidos
-* Incluir una cámara para escenarios grandes (TODO, puede dividirse en subpartes)
+* Escenas
+* Incluir una cámara para escenarios grandes
