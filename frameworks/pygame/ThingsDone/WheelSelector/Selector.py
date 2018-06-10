@@ -51,11 +51,13 @@ class Selector():
     mouse_position: returned value of `pygame.mouse.get_pos()`
     """
     def on_event_mouse(self, mouse_position):
-        for i in range(0,self.number_of):
-            if self.secciones_rect[i].collidepoint(mouse_position) and \
-                self.funciones[i] != None:
-                self.funciones[i]()
-                return True
+        if mouse_position[0]:
+            for i in range(0,self.number_of):
+                if self.secciones_rect[i].collidepoint(mouse_position) and \
+                    self.funciones[i] != None:
+                    
+                    self.funciones[i]()
+                    return True
 
     #on_event with keys
     """Call it when you want activate the functions using the keyboard

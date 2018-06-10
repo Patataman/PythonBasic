@@ -42,32 +42,30 @@ class SceneHome(Scene):
     def __init__(self, director):
         Scene.__init__(self, director)
 
-        self.pepe = Selector(self.director.screen, (WIDTH/2, HEIGHT/2))
+        self.rueda = Selector(self.director.screen, (WIDTH/2, HEIGHT/2))
 
-        self.pepe.asociateEvent(0, colorear, self.director.screen,(255,0,0))
-        self.pepe.asociateEvent(1, colorear, self.director.screen,(0,0,255))
-        self.pepe.asociateEvent(2, colorear, self.director.screen,(0,255,0))
-        self.pepe.asociateEvent(3, colorear, self.director.screen,(0,0,0))
-        self.pepe.setIcon(0, "images/icon1.png")
-        self.pepe.setIcon(1, "images/icon2.png")
-        self.pepe.setIcon(2, "images/icon3.png")
-        self.pepe.setIcon(3, "images/icon4.png")
+        self.rueda.asociateEvent(0, colorear, self.director.screen,(255,0,0))
+        self.rueda.asociateEvent(1, colorear, self.director.screen,(0,0,255))
+        self.rueda.asociateEvent(2, colorear, self.director.screen,(0,255,0))
+        self.rueda.asociateEvent(3, colorear, self.director.screen,(0,0,0))
+        self.rueda.setIcon(0, "images/icon1.png")
+        self.rueda.setIcon(1, "images/icon2.png")
+        self.rueda.setIcon(2, "images/icon3.png")
+        self.rueda.setIcon(3, "images/icon4.png")
 
 
-    def on_update(self, time):
+    def on_update(self):
         pass
 
-    def on_event(self, time, event):
+    def on_event(self, event):
         #Al pulsar una tecla...
-        keys = pygame.key.get_pressed()
         if pygame.KEYDOWN:
-            self.pepe.on_event_keys(keys)
-#            if pygame.mouse.get_pressed()[1] == 1:
-#                pygame.draw.arc(self.director.screen, (255,255,255), pygame.Rect(10,10,100,100), 0, 1, 5)
+            keys = pygame.key.get_pressed()
+            self.rueda.on_event_keys(keys)
 
         if pygame.mouse.get_pressed()[0]:
-            self.pepe.on_event_mouse(pygame.mouse.get_pos())
+            self.rueda.on_event_mouse(pygame.mouse.get_pos())
 
     def on_draw(self, screen):
-        self.pepe.draw()
-        #screen.fill((0, 0, 0))
+        #screen.fill((0, 0, 0))    Comentado por que la función consiste en pintar la pantalla
+        self.rueda.draw()

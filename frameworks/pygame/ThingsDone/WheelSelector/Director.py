@@ -13,7 +13,7 @@ class Director:
 	derivados de Scene."""
 
 	def __init__(self):
-		self.screen = pygame.display.set_mode([1024,768], pygame.RESIZABLE)
+		self.screen = pygame.display.set_mode([1024,768])
 		#Poner el iconito a la ventana
 		pygame.display.set_caption("Rueda interfaz")
 		self.scene = None
@@ -23,13 +23,8 @@ class Director:
 	def loop(self):
 		"Pone en funcionamiento el juego."
 
-		'''Establece el número de teclas que cuenta por segundo.
-			pygame.key.set_repeat(10,200)
-		   Introduce un delay de 10ms para reconocer la tecla
-		   y la siguiente la reconoce a las 200ms'''
-		pygame.key.set_repeat(10, 200)
 		while not self.quit_flag:
-			time = self.clock.tick(24)
+			self.clock.tick(30)
 
 			# Eventos de Salida
 			for event in pygame.event.get():
@@ -37,9 +32,9 @@ class Director:
 					self.quit()
 
 				# detecta eventos
-				self.scene.on_event(time, event)
+				self.scene.on_event(event)
 			# actualiza la escena
-			self.scene.on_update(time)
+			self.scene.on_update()
 
 			# dibuja la pantalla
 			self.scene.on_draw(self.screen)
