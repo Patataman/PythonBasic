@@ -37,5 +37,6 @@ class Director:
 
                 self.escena.eventos(evento)
 
-            self.escena.actualizar()
+            t_delta = tiempo / 1000
+            self.escena.actualizar(t_delta)
             self.escena.pintar(self.ventana)

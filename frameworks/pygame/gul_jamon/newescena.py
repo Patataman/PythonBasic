@@ -8,7 +8,7 @@ class Escena:
     def eventos(self, evento):
         raise NotImplemented("Falta implementar eventos")
 
-    def actualizar(self):
+    def actualizar(self, t):
         raise NotImplemented("Falta implementar actualizar")
 
     def pintar(self, ventana):
@@ -26,7 +26,7 @@ class Rojo(Escena):
                 nueva_escena = Juego(self.director)
                 self.director.cambiar_escena(nueva_escena)
 
-    def actualizar(self):
+    def actualizar(self, t):
         pass
 
     def pintar(self, ventana):
@@ -95,22 +95,23 @@ class Juego(Escena):
             keys = pygame.key.get_pressed()
 
             if keys[K_w]:
-                self.desplazamiento = -10
+                self.desplazamiento = -250
             if keys[K_s]:
-                self.desplazamiento = 10
+                self.desplazamiento = 250
             if keys[K_i]:
-                self.desplazamiento2 = -10
+                self.desplazamiento2 = -250
             if keys[K_k]:
-                self.desplazamiento2 = 10
+                self.desplazamiento2 = 250
 
 
-    def actualizar(self):
+    def actualizar(self, time):
         self.camera.follow(self.bola, self.director.w, self.director.h)
 
         self.comprobar_bola()
-
+        
         self.group_bola.update()
-        self.jugador.mover(self.desplazamiento, self.director.h)
+
+        self.jugador.mover(self.desplazamiento*time, self.director.h)
         #self.cpu.mover(self.desplazamiento2, self.director.h)
 
         self.actualizar_cpu()
