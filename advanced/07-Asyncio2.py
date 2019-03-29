@@ -13,6 +13,14 @@ async def coroutine(i):
         requests.get,
         'http://googles.es/'
     )
+    
+    # With arguments
+    # res = await loop.run_in_executor(
+    #     None,
+    #     functools.partial(requests.get,
+    #             url='https://google.es'
+    #     )
+    # )
 
     print('coroutine_{} resumed. coroutine_1 exiting'.format(i))
     return res
