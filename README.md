@@ -14,3 +14,4 @@ Proyectos/Módulos que merecen la pena conocer aunque no aparezcan en este repo:
 - [asyncio](https://docs.python.org/3/library/asyncio.html)
 - [aiohttp](https://docs.aiohttp.org/en/stable/)
 - [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
+- [defaultdict](https://docs.python.org/3/library/collections.html#collections.defaultdict)
