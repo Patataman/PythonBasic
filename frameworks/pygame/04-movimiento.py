@@ -97,6 +97,7 @@ class Personaje(sprite.Sprite):     #Nuestro personaje hereda de la clase Sprite
 
 #Con esto ya tenemos todo lo básico para generar el sprite.
 magikarp = Personaje()  #Creación del personaje
+speed = magikarp.speed
 grupo_sprites = pygame.sprite.GroupSingle()
 grupo_sprites.add(magikarp)
 
@@ -109,28 +110,33 @@ while True:     #Bucle de "Juego"
         por que si no se reinicia
     '''
     dt = clock.tick(30) / 1000
+    pixels_h = pixels_v = 0
 
     for event in pygame.event.get():    #Cuando ocurre un evento...
         if event.type == pygame.QUIT:   #Si el evento es cerrar la ventana
             pygame.quit()               #Se cierra pygame
             sys.exit()                  #Se cierra el programa
 
-        #Vamos a movernos sólo cuando se presione alguna tecla
-        pixels_h = pixels_v = 0
-        if event.type == pygame.KEYDOWN:
-            keys = pygame.key.get_pressed()
-            if keys[K_w]:
-                pixels_v = -i.speed
-            if keys[K_a]:
-                pixels_h = -i.speed
-            if keys[K_d]:
-                pixels_h = i.speed
-            if keys[K_s]:
-                ''' También podemos modificar el personaje de forma
-                    individual, aunque dado que los grupos van a "agrupar"
-                    cosas que van juntas lo suyo sería hacerlo con los grupos
-                '''
-                pixels_v = i.speed
+        #Vamos a movernos cuando se presione las teclas W, A, D y S
+
+        keys = pygame.key.get_pressed()
+        if keys[K_w]:
+            #Se deja el movimiento de pixels_v o pixels_h en cero para evitar movimiento diagonales
+            pixels_v = -speed
+            pixels_h = 0
+        if keys[K_a]:
+            pixels_v = 0
+            pixels_h = -speed
+        if keys[K_d]:
+            pixels_v = 0
+            pixels_h = speed
+        if keys[K_s]:
+            ''' También podemos modificar el personaje de forma
+                individual, aunque dado que los grupos van a "agrupar"
+                cosas que van juntas lo suyo sería hacerlo con los grupos
+            '''
+            pixels_v = speed
+            pixels_h = 0
 
     for i in grupo_sprites:
         i.mover(pixels_h,pixels_v)
