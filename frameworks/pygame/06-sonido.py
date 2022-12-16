@@ -141,6 +141,7 @@ while True:     #Bucle de "Juego"
         por que si no se reinicia
     '''
     dt = clock.tick(30) / 1000
+    pixels_h = pixels_v = 0
 
     for event in pygame.event.get():    #Cuando ocurre un evento...
         if event.type == pygame.QUIT:   #Si el evento es cerrar la ventana
@@ -148,7 +149,6 @@ while True:     #Bucle de "Juego"
             sys.exit()                  #Se cierra el programa
 
         #Vamos a movernos sólo cuando se presione alguna tecla
-        pixels_h = pixels_v = 0
         if event.type == pygame.KEYDOWN:
             keys = pygame.key.get_pressed()
             #>>>>>>>>>>> ESTO ES NUEVO <<<<<<<<<<<
