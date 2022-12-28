@@ -134,7 +134,7 @@ camera = Camera(complex_camera, TOTAL_WIDTH,TOTAL_HEIGHT)
 main_pj = Magikarp()
 #Lo coloco fuera de la vista inicial
 otro_pj = Magikarp()
-otro_pj.rect.centerx = 800
+otro_pj.rect.centerx = 900
 otro_pj.rect.centery = 450
 #Grupo donde irán el resto de elementos
 ingame_elements = pygame.sprite.Group()
@@ -152,6 +152,7 @@ while True:     #Bucle de "Juego"
         por que si no se reinicia
     '''
     dt = clock.tick(30) / 1000
+    pixels_h = pixels_v = 0
 
     for event in pygame.event.get():    #Cuando ocurre un evento...
         if event.type == pygame.QUIT:   #Si el evento es cerrar la ventana
@@ -159,21 +160,19 @@ while True:     #Bucle de "Juego"
             sys.exit()                  #Se cierra el programa
 
         #Vamos a movernos sólo cuando se presione alguna tecla
-        pixels_h = pixels_v = 0
-        if event.type == pygame.KEYDOWN:
-            keys = pygame.key.get_pressed()
-            if keys[K_w]:
-                pixels_v = -main_pj.speed
-            if keys[K_a]:
-                pixels_h = -main_pj.speed
-            if keys[K_d]:
-                pixels_h = main_pj.speed
-            if keys[K_s]:
-                ''' También podemos modificar el personaje de forma
-                    individual, aunque dado que los grupos van a "agrupar"
-                    cosas que van juntas lo suyo sería hacerlo con los grupos
-                '''
-                pixels_v = main_pj.speed
+        keys = pygame.key.get_pressed()
+        if keys[K_w]:
+            pixels_v = -main_pj.speed
+        if keys[K_a]:
+            pixels_h = -main_pj.speed
+        if keys[K_d]:
+            pixels_h = main_pj.speed
+        if keys[K_s]:
+            ''' También podemos modificar el personaje de forma
+                individual, aunque dado que los grupos van a "agrupar"
+                cosas que van juntas lo suyo sería hacerlo con los grupos
+            '''
+            pixels_v = main_pj.speed
 
     #Actualizacion de cosas
     ventana.fill((255, 255, 0))             #Limpieza de la pantalla

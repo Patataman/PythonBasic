@@ -80,14 +80,15 @@ class Personaje(sprite.Sprite):     #Nuestro personaje hereda de la clase Sprite
     '''
     def mover(self, x=0, y=0):
         #Comprobación para no salirnos del mapa
-        if self.rect.centerx+x >= ventana.get_width() or self.rect.centerx+x < 0:
+        #Sus limites requieren ser compensados (offset) con el ancho y alto de la imagen
+        if self.rect.centerx + x + self.frame_width/2 >= ventana.get_width() or self.rect.centerx + x - self.frame_width/2 < 0:
             return
         #Comprobación para no salirnos del mapa
-        if self.rect.centery+y >= ventana.get_height() or self.rect.centery+y < 0:
+        if self.rect.centery + y + self.frame_height/2 >= ventana.get_height() or self.rect.centery + y < 0:
             return
         #Si el movimiento está dentro de los límites de la pantalla,
         #se "recoloca" el centro de la imagen
-        self.rect.center = (self.rect.centerx+x, self.rect.centery+y)
+        self.rect.center = (self.rect.centerx + x, self.rect.centery + y)
 
 
 #######################################
@@ -118,6 +119,7 @@ while True:     #Bucle de "Juego"
         por que si no se reinicia
     '''
     dt = clock.tick(30) / 1000
+    pixels_h = pixels_v = 0
 
     for event in pygame.event.get():    #Cuando ocurre un evento...
         if event.type == pygame.QUIT:   #Si el evento es cerrar la ventana
@@ -125,34 +127,38 @@ while True:     #Bucle de "Juego"
             sys.exit()                  #Se cierra el programa
 
         #Vamos a movernos sólo cuando se presione alguna tecla
-        pixels_h = pixels_v = 0
-        if event.type == pygame.KEYDOWN:
-            keys = pygame.key.get_pressed()
-            ''' Cuando ocurre un evento y están colisionando,
-                cambia de posición al otro magickarp. Lo correcto
-                para que quede mejor, habría que comprobar
-                cuando hay un evento, si no, siempre.
+        
+        keys = pygame.key.get_pressed()
+        ''' Cuando ocurre un evento y están colisionando,
+            cambia de posición al otro magickarp. Lo correcto
+            para que quede mejor, habría que comprobar
+            cuando hay un evento, si no, siempre.
 
-                Hay varios tipos de colisiones, mask comprueba pixel a pixel,
-                mientras que hay otras con formas predefinidas.
-                https://www.pygame.org/docs/ref/sprite.html
-            '''
-            if keys[K_w]:
-                pixels_v = -10
-            if keys[K_a]:
-                pixels_h = -10
-            if keys[K_d]:
-                pixels_h = 10
-            if keys[K_s]:
-                pixels_v = 10
+            Hay varios tipos de colisiones, mask comprueba pixel a pixel,
+            mientras que hay otras con formas predefinidas.
+            https://www.pygame.org/docs/ref/sprite.html
+        '''
+        if keys[K_w]:
+            pixels_v = -10
+            pixels_h = 0
+        if keys[K_a]:
+            pixels_v = 0
+            pixels_h = -10
+        if keys[K_d]:
+            pixels_v = 0
+            pixels_h = 10
+        if keys[K_s]:
+            pixels_v = 10
+            pixels_h = 0
 
     for i in grupo_movimiento:
         i.mover(pixels_h,pixels_v)
 
     #Si hay colisión...
     if pygame.sprite.collide_mask(magikarp_jugador, magikarp_obstaculo):
-        magikarp_obstaculo.rect.center = (ventana.get_width()/2+int(random.uniform(-200,200)),
-                                        ventana.get_height()/2+int(random.uniform(-200,200)))
+        #Esto tiene que considerar la compensación del frame, así el obstaculo(magikarp) no aparece cortado a la mitad 
+        magikarp_obstaculo.rect.center = (ventana.get_width()/2 + int(random.uniform(-300,300)),
+                                        ventana.get_height()/2 + int(random.uniform(-200,100)))
 
     #Actualizacion de cosas
     ventana.fill((0, 0, 0))                    #Limpieza de la pantalla
