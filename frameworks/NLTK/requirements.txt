@@ -3,7 +3,7 @@ bs4==0.0.1
 cycler==0.10.0
 kiwisolver==1.0.1
 matplotlib==2.2.2
-nltk==3.6.6
+nltk==3.9
 numpy==1.22.0
 pyparsing==2.2.0
 python-dateutil==2.7.2
