@@ -1,0 +1,24 @@
+""" Esto es una mala práctica, pero a veces (ojalá nunca), por lo que sea,
+    necesitamos añadir o modificar una función de una clase dinámicamente.
+    Una forma de hacerlo es como dicen en esta respuesta de SO: https://stackoverflow.com/a/28060251
+"""
+
+class A():
+    def echo(self):
+        print("Pepe")
+
+a = A()
+a.echo()  # Pepe
+
+def new_echo(self, num):
+    print("Pepe "*num)
+
+try:
+    a.echo = new_echo
+    a.echo()
+except Exception as e:
+    print("No funciona!")
+    print(e)
+
+a.echo = new_echo.__get__(a)
+a.echo(3)  # Pepe Pepe Pepe
